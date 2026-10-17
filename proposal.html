@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ne">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A special romantic proposal for Sonam">
+    <title>💖 For You, Sonam 💖</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600;700&family=Dancing+Script:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="proposal.css">
+</head>
+
+<body>
+    <!-- Floating Hearts Background -->
+    <div class="hearts-container" id="heartsContainer"></div>
+
+    <!-- Sparkle particles -->
+    <div class="sparkles-container" id="sparklesContainer"></div>
+
+    <!-- ===== PHASE 0: Welcome / Start Screen ===== -->
+    <section class="phase phase-welcome" id="phaseWelcome">
+        <div class="welcome-card">
+            <div class="envelope-icon" id="welcomeIcon">
+                <span class="envelope-emoji">💌</span>
+                <span class="envelope-sparkle sparkle-1">✨</span>
+                <span class="envelope-sparkle sparkle-2">💙</span>
+            </div>
+            <h1 class="welcome-title">For Sonam 💙</h1>
+            <p class="welcome-subtitle">A special message is waiting for you...</p>
+            <p class="welcome-note">Tap below to begin ✨</p>
+            <div class="start-btn-wrapper">
+                <button class="btn btn-start" id="btnStart">
+                    <span class="btn-text">Start 💌</span>
+                    <span class="btn-heart-pulse">💙</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PHASE 1: Nepali Lines ===== -->
+    <section class="phase phase-lines hidden" id="phaseLines">
+        <div class="lines-wrapper">
+            <p class="nepali-line" id="line1">Yo hawa ko kasam, 💕</p>
+            <p class="nepali-line" id="line2">yo baadal ko kasam 🌹</p>
+            <p class="nepali-line" id="line3"> yo jangal khola nadi ko kasam...✨</p>
+            <p class="nepali-line" id="line4">Kasam ma timi bina baachna sakdina.💗</p>
+            <p class="nepali-line" id="line5">Uhee timro jagahnya paagal premi,</p>
+            <p class="nepali-line" id="line6">uhee timro pyaaro him🩵</p>
+        </div>
+    </section>
+
+    <!-- ===== PHASE 2: Hollywood Proposal ===== -->
+    <section class="phase phase-proposal hidden" id="phaseProposal">
+        <div class="proposal-card">
+            <div class="rose-icon">🌹</div>
+            <h1 class="proposal-title">Sonam...</h1>
+            <p class="proposal-quote">
+                "I came here tonight because when you realize you want to spend the rest of your life with somebody, you
+                want the rest of your life to start as soon as possible."
+            </p>
+            <p class="movie-ref">— When Harry Met Sally</p>
+            <div class="question-text">
+                <span class="will-you">Will you be mine forever?</span>
+                <span class="heart-pulse">💖</span>
+            </div>
+            <div class="buttons-container" id="buttonsContainer">
+                <button class="btn btn-yes" id="btnYes">Yes! 💍</button>
+                <button class="btn btn-no" id="btnNo">No 😢</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PHASE 3: Celebration ===== -->
+    <section class="phase phase-celebration hidden" id="phaseCelebration">
+        <div class="celebration-content">
+            <h1 class="celebration-title" id="celebTitle">I Knew You'd Say Yes! 🎉💖</h1>
+            <div class="image-frame" id="imageFrame">
+                <img src="ankit.jpg" alt="Our Love" class="celebration-image" id="celebImage">
+            </div>
+            <p class="celebration-message">Forever starts now, Sonam... 💕</p>
+            <div class="fireworks" id="fireworksContainer"></div>
+        </div>
+        <!-- Background Music -->
+        <audio id="bgMusic" loop>
+            <source src="sonam.mp3" type="audio/mpeg">
+        </audio>
+    </section>
+
+    <script src="proposal.js"></script>
+</body>
+
+</html>

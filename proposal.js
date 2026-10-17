@@ -9,9 +9,93 @@ document.addEventListener('DOMContentLoaded', () => {
     createFloatingHearts();
     createSparkles();
 
-    // === Start Phase 1: Nepali Lines ===
-    startNepaliLines();
+    // === Setup Phase 0: Welcome Screen (Start / Go Button) ===
+    initWelcomeScreen();
 });
+
+/* ------------------------------------------
+   PHASE 0: WELCOME SCREEN (START / GO BUTTON)
+   ------------------------------------------ */
+function initWelcomeScreen() {
+    const btnStart = document.getElementById('btnStart');
+    const phaseWelcome = document.getElementById('phaseWelcome');
+    const phaseLines = document.getElementById('phaseLines');
+
+    if (!btnStart || !phaseWelcome) {
+        startNepaliLines();
+        return;
+    }
+
+    let started = false;
+
+    function handleStart(e) {
+        if (started) return;
+        started = true;
+
+        // Position for particle burst
+        let x = window.innerWidth / 2;
+        let y = window.innerHeight / 2;
+
+        if (e && e.clientX && e.clientY) {
+            x = e.clientX;
+            y = e.clientY;
+        } else if (btnStart) {
+            const rect = btnStart.getBoundingClientRect();
+            x = rect.left + rect.width / 2;
+            y = rect.top + rect.height / 2;
+        }
+
+        // Trigger cute heart pop
+        createClickHeartBurst(x, y);
+
+        // Smooth transition out
+        phaseWelcome.classList.add('fade-out');
+
+        setTimeout(() => {
+            phaseWelcome.classList.add('hidden');
+            if (phaseLines) {
+                phaseLines.classList.remove('hidden');
+                phaseLines.classList.remove('fade-out');
+                phaseLines.style.opacity = '1';
+                startNepaliLines();
+            }
+        }, 700);
+    }
+
+    btnStart.addEventListener('click', handleStart);
+}
+
+/* ------------------------------------------
+   CLICK HEART BURST ANIMATION
+   ------------------------------------------ */
+function createClickHeartBurst(x, y) {
+    const burstIcons = ['💙', '🩵', '✨', '💕', '💎', '🌸', '💫'];
+    const count = 12;
+
+    for (let i = 0; i < count; i++) {
+        const particle = document.createElement('span');
+        particle.classList.add('click-heart-particle');
+        particle.textContent = burstIcons[Math.floor(Math.random() * burstIcons.length)];
+        particle.style.left = x + 'px';
+        particle.style.top = y + 'px';
+
+        const angle = (Math.PI * 2 / count) * i + (Math.random() * 0.4 - 0.2);
+        const distance = Math.random() * 90 + 50;
+        const tx = Math.cos(angle) * distance;
+        const ty = Math.sin(angle) * distance;
+
+        particle.style.setProperty('--tx', tx + 'px');
+        particle.style.setProperty('--ty', ty + 'px');
+
+        document.body.appendChild(particle);
+
+        setTimeout(() => {
+            if (particle.parentNode) {
+                particle.remove();
+            }
+        }, 1200);
+    }
+}
 
 /* ------------------------------------------
    FLOATING HEARTS BACKGROUND

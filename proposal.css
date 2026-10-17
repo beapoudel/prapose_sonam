@@ -1,0 +1,705 @@
+/* ==========================================
+   ROMANTIC PROPOSAL - STYLES
+   ========================================== */
+
+/* === Reset & Base === */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    background: #fff0f5;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: background 1.5s ease;
+}
+
+/* === Floating Hearts Background === */
+.hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 15;
+    overflow: hidden;
+}
+
+.floating-heart {
+    position: absolute;
+    top: -50px;
+    font-size: 24px;
+    animation: fallDown linear infinite;
+    opacity: 0.85;
+    filter: drop-shadow(0 0 10px rgba(60, 160, 255, 0.75));
+    user-select: none;
+}
+
+@keyframes fallDown {
+    0% {
+        transform: translateY(0) rotate(0deg) scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(115vh) rotate(360deg) scale(0.7);
+        opacity: 0;
+    }
+}
+
+/* === Sparkles === */
+.sparkles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 12;
+    overflow: hidden;
+}
+
+.sparkle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #f06595;
+    border-radius: 50%;
+    animation: twinkle ease-in-out infinite;
+    box-shadow: 0 0 6px 2px rgba(240, 101, 149, 0.4);
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0; transform: scale(0.5); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* === Phase Containers === */
+.phase {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: opacity 1s ease;
+}
+
+.phase.hidden {
+    display: none;
+    opacity: 0;
+}
+
+.phase.fade-out {
+    opacity: 0;
+}
+
+/* === Phase Backgrounds === */
+.phase-lines {
+    background: linear-gradient(135deg, #fff0f5, #ffe4ee, #ffd6e7, #fff0f5);
+    background-size: 300% 300%;
+    animation: softPinkShift 8s ease infinite;
+}
+
+@keyframes softPinkShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.phase-proposal {
+    background: linear-gradient(135deg, #e8f4fd, #dbeeff, #cce5ff, #e8f4fd);
+    background-size: 300% 300%;
+    animation: softBlueShift 8s ease infinite;
+}
+
+@keyframes softBlueShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* ==========================================
+   PHASE 1: NEPALI LINES
+   ========================================== */
+.lines-wrapper {
+    text-align: center;
+    padding: 2rem;
+    max-width: 800px;
+    width: 90%;
+    position: relative;
+    z-index: 25;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nepali-line {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    font-weight: 400;
+    color: transparent;
+    background: linear-gradient(135deg, #d6336c, #e64980, #f06595, #d6336c);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    line-height: 1.8;
+    letter-spacing: 0.5px;
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+    text-shadow: none;
+    filter: drop-shadow(0 0 15px rgba(214, 51, 108, 0.2));
+    position: absolute;
+    width: 100%;
+    animation: gradientShift 4s ease infinite;
+}
+
+.nepali-line.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.nepali-line.fade-away {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.95);
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* ==========================================
+   PHASE 2: PROPOSAL
+   ========================================== */
+.proposal-card {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(100, 160, 230, 0.3);
+    border-radius: 30px;
+    padding: 3rem 3.5rem;
+    max-width: 650px;
+    width: 90%;
+    text-align: center;
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.08),
+        0 0 40px rgba(100, 160, 230, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    animation: cardEntry 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    position: relative;
+    overflow: hidden;
+}
+
+.proposal-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg, transparent, rgba(255, 107, 157, 0.05), transparent, rgba(168, 85, 247, 0.05), transparent);
+    animation: rotateGlow 8s linear infinite;
+    z-index: -1;
+}
+
+@keyframes rotateGlow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes cardEntry {
+    0% {
+        opacity: 0;
+        transform: scale(0.7) translateY(40px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.rose-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: rosePulse 2s ease-in-out infinite;
+    filter: drop-shadow(0 0 15px rgba(255, 0, 80, 0.5));
+}
+
+@keyframes rosePulse {
+    0%, 100% { transform: scale(1) rotate(-5deg); }
+    50% { transform: scale(1.15) rotate(5deg); }
+}
+
+.proposal-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 4.5rem;
+    background: linear-gradient(135deg, #d6336c, #e64980, #7c3aed);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 1.5rem;
+    animation: shimmer 3s ease-in-out infinite;
+    text-shadow: none;
+    filter: drop-shadow(0 0 15px rgba(214, 51, 108, 0.3));
+}
+
+@keyframes shimmer {
+    0%, 100% { filter: drop-shadow(0 0 25px rgba(255, 107, 157, 0.4)) brightness(1); }
+    50% { filter: drop-shadow(0 0 35px rgba(255, 107, 157, 0.6)) brightness(1.1); }
+}
+
+.proposal-quote {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.55rem;
+    color: #4a5568;
+    line-height: 1.7;
+    margin-bottom: 0.8rem;
+    font-style: italic;
+    padding: 0 1rem;
+    animation: fadeInUp 1s 0.5s both;
+}
+
+.movie-ref {
+    font-size: 0.95rem;
+    color: #7c3aed;
+    margin-bottom: 2rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+    animation: fadeInUp 1s 0.7s both;
+}
+
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.question-text {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 2.5rem;
+    animation: fadeInUp 1s 0.9s both;
+}
+
+.will-you {
+    background: linear-gradient(90deg, #d6336c, #7c3aed, #d6336c);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: textGlow 3s ease-in-out infinite;
+}
+
+@keyframes textGlow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.heart-pulse {
+    display: inline-block;
+    animation: heartBeat 1s ease-in-out infinite;
+    margin-left: 8px;
+}
+
+@keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    25% { transform: scale(1.3); }
+    40% { transform: scale(1); }
+    60% { transform: scale(1.2); }
+}
+
+/* === Buttons === */
+.buttons-container {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    animation: fadeInUp 1s 1.1s both;
+    min-height: 80px;
+}
+
+.btn {
+    padding: 16px 48px;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.5px;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:active::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* Yes Button */
+.btn-yes {
+    background: linear-gradient(135deg, #d6336c, #e64980, #d6336c);
+    background-size: 200% 200%;
+    color: #fff;
+    box-shadow:
+        0 8px 25px rgba(214, 51, 108, 0.35),
+        0 0 15px rgba(214, 51, 108, 0.15);
+    animation: yesGlow 2s ease-in-out infinite, gradientMove 3s ease infinite;
+    z-index: 5;
+}
+
+@keyframes yesGlow {
+    0%, 100% { box-shadow: 0 8px 25px rgba(214, 51, 108, 0.35), 0 0 15px rgba(214, 51, 108, 0.15); }
+    50% { box-shadow: 0 8px 35px rgba(214, 51, 108, 0.5), 0 0 30px rgba(214, 51, 108, 0.25); }
+}
+
+@keyframes gradientMove {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.btn-yes:hover {
+    transform: scale(1.08);
+    box-shadow: 0 12px 40px rgba(255, 45, 120, 0.6);
+}
+
+/* Yes button grows with each "No" hover */
+.btn-yes.grow-1 { transform: scale(1.15); font-size: 1.35rem; padding: 18px 55px; }
+.btn-yes.grow-2 { transform: scale(1.3); font-size: 1.5rem; padding: 20px 60px; }
+.btn-yes.grow-3 { transform: scale(1.45); font-size: 1.65rem; padding: 22px 65px; }
+.btn-yes.grow-4 { transform: scale(1.6); font-size: 1.8rem; padding: 24px 70px; }
+.btn-yes.grow-5 { transform: scale(1.75); font-size: 1.95rem; padding: 26px 75px; }
+
+/* No Button */
+.btn-no {
+    background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+    color: #64748b;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    position: relative;
+    transition: all 0.25s ease;
+    z-index: 5;
+    white-space: nowrap;
+}
+
+.btn-no:hover {
+    background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+    color: #475569;
+}
+
+/* ==========================================
+   PHASE 3: CELEBRATION
+   ========================================== */
+.phase-celebration {
+    background: linear-gradient(135deg, #ffffff, #fafafa, #f8f8f8, #ffffff);
+    background-size: 300% 300%;
+    animation: softWhiteShift 8s ease infinite;
+    overflow: hidden;
+}
+
+@keyframes softWhiteShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.celebration-content {
+    text-align: center;
+    z-index: 10;
+    position: relative;
+    animation: celebEntry 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    padding: 2rem;
+}
+
+@keyframes celebEntry {
+    0% { opacity: 0; transform: scale(0.5); }
+    60% { transform: scale(1.05); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+.celebration-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3.5rem;
+    background: linear-gradient(135deg, #d6336c, #e64980, #d6336c, #f06595);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 2rem;
+    animation: celebShimmer 3s ease infinite;
+    filter: drop-shadow(0 0 15px rgba(214, 51, 108, 0.3));
+}
+
+@keyframes celebShimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.image-frame {
+    width: 420px;
+    max-width: 90vw;
+    margin: 0 auto 2rem;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 3px solid rgba(255, 107, 157, 0.4);
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(255, 107, 157, 0.2),
+        0 0 80px rgba(255, 107, 157, 0.1);
+    animation: frameGlow 3s ease-in-out infinite, float 4s ease-in-out infinite;
+    position: relative;
+}
+
+.image-frame::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #ff6b9d, #c084fc, #ffd700, #ff6b9d);
+    background-size: 300% 300%;
+    border-radius: 22px;
+    z-index: -1;
+    animation: borderGlow 4s ease infinite;
+}
+
+@keyframes borderGlow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+@keyframes frameGlow {
+    0%, 100% { box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(255,107,157,0.2); }
+    50% { box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 60px rgba(255,107,157,0.35); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.celebration-image {
+    width: 100%;
+    display: block;
+    border-radius: 18px;
+}
+
+.celebration-message {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    color: #d6336c;
+    animation: fadeInUp 1s 0.8s both;
+    filter: drop-shadow(0 0 8px rgba(214, 51, 108, 0.15));
+}
+
+/* === Firework Particles === */
+.firework {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    animation: fireworkBurst 1.5s ease-out forwards;
+    pointer-events: none;
+    z-index: 100;
+}
+
+@keyframes fireworkBurst {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(var(--tx), var(--ty)) scale(0);
+    }
+}
+
+/* === Confetti === */
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    top: -10px;
+    z-index: 100;
+    pointer-events: none;
+    animation: confettiFall linear forwards;
+}
+
+@keyframes confettiFall {
+    0% {
+        transform: translateY(0) rotateZ(0deg) rotateX(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(110vh) rotateZ(720deg) rotateX(360deg);
+        opacity: 0;
+    }
+}
+
+/* === Responsive — Tablet === */
+@media (max-width: 768px) {
+    .nepali-line {
+        font-size: 1.6rem;
+        line-height: 1.6;
+        padding: 0 1rem;
+    }
+
+    .proposal-card {
+        padding: 2.5rem 2rem;
+        border-radius: 24px;
+        max-width: 90%;
+    }
+
+    .proposal-title {
+        font-size: 3.5rem;
+    }
+
+    .proposal-quote {
+        font-size: 1.3rem;
+        padding: 0 0.5rem;
+    }
+
+    .question-text {
+        font-size: 1.5rem;
+    }
+
+    .btn {
+        padding: 14px 38px;
+        font-size: 1.05rem;
+    }
+
+    .celebration-title {
+        font-size: 2.8rem;
+    }
+
+    .celebration-message {
+        font-size: 1.6rem;
+    }
+
+    .image-frame {
+        width: 340px;
+    }
+}
+
+/* === Responsive — Mobile === */
+@media (max-width: 480px) {
+    .nepali-line {
+        font-size: 1.2rem;
+        line-height: 1.5;
+        padding: 0 0.8rem;
+    }
+
+    .lines-wrapper {
+        min-height: 80px;
+        padding: 1rem;
+    }
+
+    .proposal-card {
+        padding: 1.8rem 1.2rem;
+        border-radius: 18px;
+        max-width: 95%;
+    }
+
+    .rose-icon {
+        font-size: 2.8rem;
+        margin-bottom: 0.6rem;
+    }
+
+    .proposal-title {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .proposal-quote {
+        font-size: 1rem;
+        line-height: 1.5;
+        padding: 0;
+    }
+
+    .movie-ref {
+        font-size: 0.8rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .question-text {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .btn {
+        padding: 12px 30px;
+        font-size: 0.95rem;
+    }
+
+    .buttons-container {
+        gap: 1.2rem;
+    }
+
+    .celebration-title {
+        font-size: 2rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .celebration-message {
+        font-size: 1.2rem;
+    }
+
+    .image-frame {
+        width: 260px;
+    }
+
+    .celebration-content {
+        padding: 1rem;
+    }
+}
+
+/* === Responsive — Very small screens === */
+@media (max-width: 360px) {
+    .nepali-line {
+        font-size: 1rem;
+    }
+
+    .proposal-title {
+        font-size: 2rem;
+    }
+
+    .proposal-quote {
+        font-size: 0.9rem;
+    }
+
+    .celebration-title {
+        font-size: 1.6rem;
+    }
+
+    .image-frame {
+        width: 220px;
+    }
+}
